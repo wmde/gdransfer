@@ -133,15 +133,16 @@ function transfer($a) {
 		#printf($gam['chown']."\n",$a['drive'],$ids,$a['user']);
 		printf("Transferring ownership of 1 file or folder. This should be quick.\n");
 		$transfer = shell_exec(sprintf($gam['chown'],$a['drive'],$ids,$a['user']));
+		printf($transfer."\n");
 	} elseif(1 < sizeof($ids)) {
 		$idlist = join(",",$ids);
 		printf("Transferring ownership of %d files and/or folders. This may take some time.\n", sizeof($ids));
 		#printf($gam['chowns']."\n",$a['drive'],$idlist,$a['user']);
 		$transfer = shell_exec(sprintf($gam['chowns'],$a['drive'],$idlist,$a['user']));
+		printf($transfer."\n");
 	} else {
 		printf("Nothing to do.");
 	}
-	printf($transfer."\n");
 	exit(0);
 }
 $src = $action['name']($action);
